@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ pet.name }} - Details</h1>
+
+    <img src="{{ pet.image_url() }}" alt="{{ pet.name }} photo">
+
+    <p>Species: {{ pet.species }}</p>
+
+    <p>Age: {{ pet.age }}</p>
+
+    <h2>Notes</h2>
+    <p>{{ pet.notes }}</p>
+
+    <h2>Availability</h2>
+    {% if pet.available %}
+        <p>Available for adoption</p>
+    {% else %}
+        <p>Not available for adoption</p>
+    {% endif %}
+    <button><a href="{{ url_for('edit_pet', pet_id=pet.id) }}">Edit pet</a></button>
+{% endblock %}
